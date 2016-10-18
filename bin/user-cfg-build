@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+
+var path = require("path");
+
+var Builder = require("../src/builder");
+
+var argv = require("yargs")
+	.usage("Usage: user-cfg-build [options] <cfg_group> [<cfg_group> ...]")
+	.demand(1)
+	.option("c", {
+		alias: "config",
+		default: "~/.config/user-cfg/src",
+		describe: "Load config from directory path",
+		string: true
+	})
+	.option("t", {
+		alias: "target",
+		default: process.cwd(),
+		describe: "Specify target directory",
+		string: true
+	})
+	.option("h", {
+		alias: "help",
+		boolean: true
+	})
+	.help("h")
+	.argv;
+
+var builder = new Builder(resolve_path(argv.config));
+
+argv["_"].forEach(function(group) {
+	builder.build(argv.target, group);
+});
+
+function resolve_path(filepath) {
+	if (filepath[0] === "~") {
+		return path.join(process.env.HOME, filepath.slice(1));
+	}
+	return filepath;
+}

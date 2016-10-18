@@ -2,6 +2,9 @@
   "name": "user-cfg-builder",
   "description": "Tool for building linux user config",
   "keywords": ["linux", "user", "config"],
+  "bin": {
+    "user-cfg-build": "./bin/user-cfg-build"
+  },
   "license": "MIT",
   "author": {
     "name": "Sergey Mashentsev",
@@ -11,5 +14,17 @@
     "type": "git",
     "url": "https://github.com/d-ashesss/user-cfg-builder.git"
   },
-  "version": "0.0.0"
+  "version": "1.0.0",
+  "dependencies": {
+    "fs-extra": "^0.30",
+    "isbinaryfile": "^3.0.1",
+    "istextorbinary": "^2.1",
+    "underscore": "^1.8",
+    "yargs": "^6.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5",
+    "mocha": "^3.1",
+    "sinon": "^1.17"
+  }
 }
