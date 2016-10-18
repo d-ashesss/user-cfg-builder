@@ -1,0 +1,15 @@
+{
+  "name": "user-cfg-builder",
+  "description": "Tool for building linux user config",
+  "keywords": ["linux", "user", "config"],
+  "license": "MIT",
+  "author": {
+    "name": "Sergey Mashentsev",
+    "email": "d.ashesss@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d-ashesss/user-cfg-builder.git"
+  },
+  "version": "0.0.0"
+}
