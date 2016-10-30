@@ -16,6 +16,30 @@ function Builder(configPath) {
 Builder.prototype = {
 	configPath: ".",
 
+	updateConfig: function(repoPath) {
+		var gitDir = path.join(this.configPath, '.git');
+		if (fs.existsSync(this.configPath) && fs.existsSync(gitDir)) {
+			try {
+				child_process.execFileSync("/usr/bin/env", [
+					"git", "pull"
+				], {
+					cwd: this.configPath,
+					encoding: "utf8"
+				});
+			} catch (e) {
+			}
+		} else if (repoPath !== null) {
+			try {
+				child_process.execFileSync("/usr/bin/env", [
+					"git", "clone", repoPath, this.configPath
+				], {
+					encoding: "utf8"
+				});
+			} catch (e) {
+			}
+		}
+	},
+
 	build: function(dstPath, groupName) {
 		var group = (new Group(groupName, this.configPath)).load();
 		var files = group.getFiles();

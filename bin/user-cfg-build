@@ -13,6 +13,11 @@ var argv = require("yargs")
 		describe: "Load config from directory path",
 		string: true
 	})
+	.option("r", {
+		alias: "config-repo",
+		describe: "Checkout config from git repo",
+		string: true
+	})
 	.option("t", {
 		alias: "target",
 		default: process.cwd(),
@@ -27,6 +32,7 @@ var argv = require("yargs")
 	.argv;
 
 var builder = new Builder(resolve_path(argv.config));
+builder.updateConfig(argv.configRepo || null);
 
 argv["_"].forEach(function(group) {
 	builder.build(argv.target, group);

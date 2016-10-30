@@ -14,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/d-ashesss/user-cfg-builder.git"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "dependencies": {
     "fs-extra": "^0.30",
     "isbinaryfile": "^3.0.1",
